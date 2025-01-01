@@ -1,28 +1,43 @@
-@Test
-public void testExampleDomain() {
-    // Set up the WebDriver
-    System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-    WebDriver driver = new ChromeDriver();
+package com.example.automation;
 
-    try {
-        // Navigate to the page
-        driver.get("https://example.com");
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-        // Validate the title
-        String expectedTitle = "Example Domain";
-        String actualTitle = driver.getTitle();
-        assertEquals(expectedTitle, actualTitle);
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-        // Interact with the hyperlink
-        WebElement link = driver.findElement(By.xpath("//a[text()='More information...']"));
-        link.click();
+public class LoginAutomationTest {
 
-        // Validate the navigation to the link's destination
-        String currentUrl = driver.getCurrentUrl();
-        assertEquals("https://www.iana.org/domains/example", currentUrl);
+    @Test
+    public void testLogin() {
+        // Set up the WebDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        WebDriver driver = new ChromeDriver();
 
-    } finally {
-        // Close the browser
-        driver.quit();
+        try {
+            // Navigate to the login page
+            driver.get("https://example.com/login");
+
+            // Locate the username and password fields
+            WebElement usernameField = driver.findElement(By.id("username"));
+            WebElement passwordField = driver.findElement(By.id("password"));
+            WebElement loginButton = driver.findElement(By.id("loginButton"));
+
+            // Perform login
+            usernameField.sendKeys("testUser");
+            passwordField.sendKeys("testPassword");
+            loginButton.click();
+
+            // Validate successful login
+            String expectedTitle = "Dashboard";
+            String actualTitle = driver.getTitle();
+            assertEquals(expectedTitle, actualTitle);
+
+        } finally {
+            // Close the browser
+            driver.quit();
+        }
     }
 }
