@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools{
-    maven 'maven-demo'
+    maven 'sonarmaven'
   }
   environment {
     SONAR_TOKEN =credentials('sonar-token')
