@@ -1,6 +1,5 @@
 package com.example.automation;
 
-package com.example.automation;
 
 public class EvenOdd {
     // Method to check if a number is even or odd
