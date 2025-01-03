@@ -30,6 +30,12 @@ stages{
       }
     }
   }
+stage('Archive JaCoCo Reports') {
+            steps {
+                echo 'Archiving JaCoCo report...'
+                archiveArtifacts artifacts: 'target/site/jacoco/index.html', allowEmptyArchive: true
+            }
+        }
 }
   post {
     success {
