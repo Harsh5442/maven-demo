@@ -1,6 +1,6 @@
 package com.example.automation;
 
-public class EvenOdd {
+public class DuplicateEvenOdd {
     // Method to check if a number is even or odd
     public String checkEvenOdd(int number) {
         if (number % 2 == 0) {
